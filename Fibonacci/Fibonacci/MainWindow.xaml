@@ -5,11 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fibonacci"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        WindowStyle="None"
+        Title="Fibonacci" Height="450" Width="800">
+    <Grid x:Name="MainGrid" Background="{StaticResource WhiteColor}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="Header" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="{StaticResource DarkRedColor}">
+            <Grid.BitmapEffect>
+                <DropShadowBitmapEffect Color="Black" Direction="-90" ShadowDepth="1"  Softness="550"></DropShadowBitmapEffect>
+            </Grid.BitmapEffect>
+            <TextBlock x:Name="ApplicationName" Text="FIBONACCI" Foreground="{StaticResource WhiteColor}" VerticalAlignment="Center" FontSize="35" Margin="10" FontFamily="Century Gothic"></TextBlock>
+            <Button x:Name="CloseButton" Style="{StaticResource CloseButtonStyle}" Height="30" Width="30" HorizontalAlignment="Right" VerticalAlignment="Top" Click="CloseButton_Click" Cursor="Hand">
+                <Image Source="./img/cross.png"></Image>
+            </Button>
+        </Grid>
+        <Grid x:Name="Content" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4">
+        </Grid>
+        <Grid x:Name="Footer" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Background="{StaticResource DarkRedColor}">
+        </Grid>
     </Grid>
 </Window>

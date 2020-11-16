@@ -4,6 +4,24 @@
              xmlns:local="clr-namespace:Fibonacci"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="BlackColor" Color="#0D0C0D" />
+        <SolidColorBrush x:Key="LightRedColor" Color="#D94A3D" />
+        <SolidColorBrush x:Key="BordeauColor" Color="#8C322A" />
+        <SolidColorBrush x:Key="DarkRedColor" Color="#59231E" />
+        <SolidColorBrush x:Key="WhiteColor" Color="#F2F2F2" />
+
+        <Style x:Key="CloseButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid Margin="4">
+                            <Image Source="./img/cross.png" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Application.Resources>
 </Application>
