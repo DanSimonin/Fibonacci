@@ -10,18 +10,23 @@
         <SolidColorBrush x:Key="DarkRedColor" Color="#59231E" />
         <SolidColorBrush x:Key="WhiteColor" Color="#F2F2F2" />
 
-        <Style x:Key="CloseButtonStyle" TargetType="Button">
+        <Style x:Key="TextBoxTemplate" TargetType="TextBox">
+            <Style.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="2" />
+                </Style>
+            </Style.Resources>
+            <Setter Property="BorderThickness" Value="2"></Setter>
+            <Setter Property="BorderBrush" Value="#a95a54"></Setter>
             <Setter Property="Background" Value="Transparent"></Setter>
-            <Setter Property="Cursor" Value="Hand"></Setter>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate>
-                        <Grid Margin="4">
-                            <Image Source="./img/cross.png" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="35"></Setter>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#F2F2F2"></Setter>
+                </Trigger>
+            </Style.Triggers>
         </Style>
     </Application.Resources>
 </Application>
