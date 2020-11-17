@@ -34,7 +34,9 @@ namespace Fibonacci
 
         // Click of the "Search Button"
         private void SearchBT_Click(object sender, RoutedEventArgs e) {
-            Console.WriteLine("test");
+            FibonacciObject fibonacci = new FibonacciObject(int.Parse(InputNumberTB.Text));
+            List<int> numbersList = fibonacci.GetList();
+            DisplayList(numbersList);
         }
 
         // Method that checks if the input is correct and can be treated
@@ -43,6 +45,11 @@ namespace Fibonacci
                 SearchBT.IsEnabled = true;
             } else {
                 SearchBT.IsEnabled = false;
+            }
+        }
+        private void DisplayList(List<int> list) {
+            for(int i = 0; i < list.Count; i++) {
+                Console.WriteLine(i + ".\t" + list[i]);
             }
         }
     }
