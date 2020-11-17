@@ -4,12 +4,14 @@
              xmlns:local="clr-namespace:Fibonacci"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!-- Basic colors -->
         <SolidColorBrush x:Key="BlackColor" Color="#0D0C0D" />
         <SolidColorBrush x:Key="LightRedColor" Color="#D94A3D" />
         <SolidColorBrush x:Key="BordeauColor" Color="#8C322A" />
         <SolidColorBrush x:Key="DarkRedColor" Color="#59231E" />
         <SolidColorBrush x:Key="WhiteColor" Color="#F2F2F2" />
 
+        <!-- Style of the search button -->
         <Style x:Key="SearchButton" TargetType="Button">
             <Setter Property="BorderBrush" Value="#F2F2F2"></Setter>
             <Setter Property="Template">
@@ -33,7 +35,8 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
+        <!-- Style of the input textbox -->
         <Style x:Key="TextBoxTemplate" TargetType="TextBox">
             <Style.Resources>
                 <Style TargetType="{x:Type Border}">
