@@ -1,5 +1,5 @@
 # Fibonacci
- Repository du projet "Fibonacci"
+ Repository of project "Fibonacci"
  
 # Description of project
  I have been asked to make a Fibonacci Calculator.
