@@ -8,16 +8,16 @@ namespace Fibonacci {
     class FibonacciObject {
 
         // initializing variables
-        private int maxNumber; // The maximum number choosed by the user
-        private List<int> numbersList; // The list of Fibonnaci numbers
+        private ulong maxNumber; // The maximum number choosed by the user
+        private List<ulong> numbersList; // The list of Fibonnaci numbers
 
         
         /// <summary>
         /// Constructor of the object fibonacci
         /// </summary>
         /// <param name="maxNumber">The maximum number choosed by the user</param>
-        public FibonacciObject(int maxNumber) {
-            this.numbersList = new List<int>();
+        public FibonacciObject(ulong maxNumber) {
+            this.numbersList = new List<ulong>();
             this.numbersList.Add(1);
             this.numbersList.Add(1);
             this.maxNumber = maxNumber;
@@ -27,9 +27,9 @@ namespace Fibonacci {
         /// Method that get every fibonacci numbers
         /// </summary>
         /// <returns>List of numbers</returns>
-        public List<int> GetList() {
+        public List<ulong> GetList() {
             Boolean enough = false;
-            int newNumber;
+            ulong newNumber;
 
             // Could have used recursion but it isn't optimised for this kind of work
             while (!enough) {
@@ -38,6 +38,9 @@ namespace Fibonacci {
                     enough = true;
                 } else {
                     numbersList.Add(newNumber); // Add the number to the list
+                    if(numbersList.Count >= 10000) { // Limit the number of result
+                        enough = true;
+                    }
                 }
             }
 

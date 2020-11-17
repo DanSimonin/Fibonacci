@@ -38,8 +38,8 @@ namespace Fibonacci
         /// Click of the "Search Button"
         /// </summary>
         private void SearchBT_Click(object sender, RoutedEventArgs e) {
-            FibonacciObject fibonacci = new FibonacciObject(int.Parse(InputNumberTB.Text));
-            List<int> numbersList = fibonacci.GetList();
+            FibonacciObject fibonacci = new FibonacciObject(ulong.Parse(InputNumberTB.Text));
+            List<ulong> numbersList = fibonacci.GetList();
             DisplayList(numbersList);
         }
 
@@ -47,7 +47,8 @@ namespace Fibonacci
         /// Method that checks if the input is correct and can be treated
         /// </summary>
         private void InputNumberTB_TextChanged(object sender, TextChangedEventArgs e) {
-            if (InputNumberTB.Text != "" && Int32.Parse(InputNumberTB.Text) >= 2) {
+            bool notTooBig = ulong.TryParse(InputNumberTB.Text, out ulong number);
+            if (InputNumberTB.Text != "" && notTooBig && number >= 2) {
                 SearchBT.IsEnabled = true;
             } else {
                 SearchBT.IsEnabled = false;
@@ -58,8 +59,9 @@ namespace Fibonacci
         /// Display Numbers in a new grid
         /// </summary>
         /// <param name="numbersList">List of the fibonacci numbers</param>
-        private void DisplayList(List<int> numbersList) {
+        private void DisplayList(List<ulong> numbersList) {
             ContentGrid.Children.Clear(); // Clear last results
+            ScrollViewer scrollViewer = new ScrollViewer(); // Creating a scrollViewer that will let us scroll through the results
 
             // Display list in console
             for (int i = 0; i < numbersList.Count; i++) {
@@ -93,8 +95,10 @@ namespace Fibonacci
                     if (index < numbersList.Count) { // if there's more number to process
                         // Create a new label
                         Label numberLabel = new Label();
+                        numberLabel.VerticalAlignment = VerticalAlignment.Center;
+                        numberLabel.Padding = new Thickness(30, 0, 0, 0);
                         // Add the number
-                        numberLabel.Content = numbersList[index];
+                        numberLabel.Content = (index+1) + ". " + numbersList[index];
 
                         // Place the label and add it into the grid
                         Grid.SetRow(numberLabel, row);
@@ -108,8 +112,9 @@ namespace Fibonacci
                 }
             }
 
-            // Add the new grid
-            ContentGrid.Children.Add(displayGrid);
+            // Add the new grid into the scrollViewer then add the scrollViewer into the main Grid
+            scrollViewer.Content = displayGrid;
+            ContentGrid.Children.Add(scrollViewer);
         }
     }
 }
