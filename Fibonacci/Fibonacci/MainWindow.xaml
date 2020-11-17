@@ -30,8 +30,9 @@
                 <DropShadowBitmapEffect Color="Black" Direction="-90" ShadowDepth="1"  Softness="550"></DropShadowBitmapEffect>
             </Grid.BitmapEffect>
             <Label x:Name="InformationText" Grid.Column="0" Content="Insert your maximum number : " Margin="10,0,0,0" Foreground="{StaticResource WhiteColor}" VerticalAlignment="Center" FontSize="20" FontFamily="Century Gothic"></Label>
-            <TextBox Grid.Column="1" Margin="10" Style="{StaticResource TextBoxTemplate}"></TextBox>
-         </Grid>
+            <TextBox x:Name="InputNumberTB" Grid.Column="1" Margin="10,10,70,10" Style="{StaticResource TextBoxTemplate}" ToolTip="Enter a number bigger than 1 !" PreviewTextInput="InputNumberTB_PreviewTextInput" TextChanged="InputNumberTB_TextChanged"/>
+            <Button x:Name="SearchBT" IsEnabled="False" Style="{StaticResource SearchButton}"  Grid.Column="1" HorizontalAlignment="Right" Margin="10" Width="50" Click="SearchBT_Click"/>
+        </Grid>
         <Grid x:Name="Content" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4">
         </Grid>
         <Grid x:Name="Footer" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="1" Background="{StaticResource DarkRedColor}">

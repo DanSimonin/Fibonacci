@@ -10,6 +10,30 @@
         <SolidColorBrush x:Key="DarkRedColor" Color="#59231E" />
         <SolidColorBrush x:Key="WhiteColor" Color="#F2F2F2" />
 
+        <Style x:Key="SearchButton" TargetType="Button">
+            <Setter Property="BorderBrush" Value="#F2F2F2"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Border x:Name="Border" CornerRadius="2" Padding="10" BorderThickness="2" BorderBrush="#F2F2F2" Background="Transparent">
+                                <Image Source="./img/search.png" />
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#DA9791"/>
+                                <Setter TargetName="Border" Property="Cursor" Value="Hand"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#D94A3D" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
         <Style x:Key="TextBoxTemplate" TargetType="TextBox">
             <Style.Resources>
                 <Style TargetType="{x:Type Border}">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,11 +19,27 @@ namespace Fibonacci
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+    public partial class MainWindow : Window {
+        private static readonly Regex _regex = new Regex("^[0-9]*$");
+
+        public MainWindow() {
             InitializeComponent();
+        }
+
+        private void InputNumberTB_PreviewTextInput(object sender, TextCompositionEventArgs e)  {
+            e.Handled = !_regex.IsMatch(e.Text);
+        }
+
+        private void SearchBT_Click(object sender, RoutedEventArgs e) {
+            Console.WriteLine("test");
+        }
+
+        private void InputNumberTB_TextChanged(object sender, TextChangedEventArgs e) {
+            if (InputNumberTB.Text != "" && Int32.Parse(InputNumberTB.Text) >= 2) {
+                SearchBT.IsEnabled = true;
+            } else {
+                SearchBT.IsEnabled = false;
+            }
         }
     }
 }
