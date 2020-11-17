@@ -97,8 +97,8 @@ namespace Fibonacci
                         Label numberLabel = new Label();
                         numberLabel.VerticalAlignment = VerticalAlignment.Center;
                         numberLabel.Padding = new Thickness(30, 0, 0, 0);
-                        // Add the number
-                        numberLabel.Content = (index+1) + ". " + numbersList[index];
+                        // Add the number with a bold style on the index
+                        numberLabel.Content = (index + 1) + ".\t" + numbersList[index].ToString();
 
                         // Place the label and add it into the grid
                         Grid.SetRow(numberLabel, row);
