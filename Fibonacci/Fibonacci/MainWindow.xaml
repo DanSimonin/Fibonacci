@@ -14,7 +14,7 @@
             <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Grid x:Name="Header" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource DarkRedColor}">
+        <Grid x:Name="HeaderGrid" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource DarkRedColor}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -26,9 +26,9 @@
             <TextBox x:Name="InputNumberTB" Grid.Column="1" Margin="10,10,70,10" Style="{StaticResource TextBoxTemplate}" ToolTip="Enter a number bigger than 1 !" PreviewTextInput="InputNumberTB_PreviewTextInput" TextChanged="InputNumberTB_TextChanged"/>
             <Button x:Name="SearchBT" IsEnabled="False" Style="{StaticResource SearchButton}"  Grid.Column="1" HorizontalAlignment="Right" Margin="10" Width="50" Click="SearchBT_Click"/>
         </Grid>
-        <Grid x:Name="Content" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid x:Name="ContentGrid" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
         </Grid>
-        <Grid x:Name="Footer" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource DarkRedColor}">
+        <Grid x:Name="FooterGrid" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="{StaticResource DarkRedColor}">
         </Grid>
     </Grid>
 </Window>

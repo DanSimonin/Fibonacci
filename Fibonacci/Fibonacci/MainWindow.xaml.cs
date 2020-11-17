@@ -27,19 +27,25 @@ namespace Fibonacci
             InitializeComponent();
         }
 
-        // Method that checks if the input is other than a number
+        /// <summary>
+        /// Method that checks if the input is other than a number
+        /// </summary>
         private void InputNumberTB_PreviewTextInput(object sender, TextCompositionEventArgs e)  {
             e.Handled = !_regex.IsMatch(e.Text);
         }
 
-        // Click of the "Search Button"
+        /// <summary>
+        /// Click of the "Search Button"
+        /// </summary>
         private void SearchBT_Click(object sender, RoutedEventArgs e) {
             FibonacciObject fibonacci = new FibonacciObject(int.Parse(InputNumberTB.Text));
             List<int> numbersList = fibonacci.GetList();
             DisplayList(numbersList);
         }
 
-        // Method that checks if the input is correct and can be treated
+        /// <summary>
+        /// Method that checks if the input is correct and can be treated
+        /// </summary>
         private void InputNumberTB_TextChanged(object sender, TextChangedEventArgs e) {
             if (InputNumberTB.Text != "" && Int32.Parse(InputNumberTB.Text) >= 2) {
                 SearchBT.IsEnabled = true;
@@ -47,10 +53,63 @@ namespace Fibonacci
                 SearchBT.IsEnabled = false;
             }
         }
-        private void DisplayList(List<int> list) {
-            for(int i = 0; i < list.Count; i++) {
-                Console.WriteLine(i + ".\t" + list[i]);
+
+        /// <summary>
+        /// Display Numbers in a new grid
+        /// </summary>
+        /// <param name="numbersList">List of the fibonacci numbers</param>
+        private void DisplayList(List<int> numbersList) {
+            ContentGrid.Children.Clear(); // Clear last results
+
+            // Display list in console
+            for (int i = 0; i < numbersList.Count; i++) {
+                Console.WriteLine(i + ".\t" + numbersList[i]);
             }
+
+            Grid displayGrid = new Grid(); // Create a new Grid
+
+            // Set the basic style of the grid
+            displayGrid.Margin = new Thickness(20);
+            displayGrid.ShowGridLines = true;
+            displayGrid.VerticalAlignment = VerticalAlignment.Top;
+
+            // Adding Columns
+            displayGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            displayGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            displayGrid.ColumnDefinitions.Add(new ColumnDefinition());
+
+            // Get the number of rows needed 
+            double numberRows = Math.Ceiling(Convert.ToDouble(numbersList.Count()) / 3);
+
+            int index = 0; // index of the numberList
+
+            for(int row = 0; row < numberRows; row++) { // for each row
+                // Create a new row
+                RowDefinition basicRow = new RowDefinition();
+                basicRow.Height = new GridLength(40);
+                displayGrid.RowDefinitions.Add(basicRow);
+
+                for (int column = 0; column < 3; column++) { // for each column                    
+                    if (index < numbersList.Count) { // if there's more number to process
+                        // Create a new label
+                        Label numberLabel = new Label();
+                        // Add the number
+                        numberLabel.Content = numbersList[index];
+
+                        // Place the label and add it into the grid
+                        Grid.SetRow(numberLabel, row);
+                        Grid.SetColumn(numberLabel, column);
+                        displayGrid.Children.Add(numberLabel);
+
+                        index++;
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            // Add the new grid
+            ContentGrid.Children.Add(displayGrid);
         }
     }
 }
